@@ -198,6 +198,14 @@ export const wedding = {
     { name: 'Bạn thân', message: 'Cưới nhau rồi nhớ mời tụi này ăn cỗ dài dài nha!' },
   ] as Wish[],
 
+  // --- Nhạc nền ---
+  // Thả file nhạc của bạn vào public/music/ rồi trỏ đường dẫn ở đây.
+  // Lưu ý bản quyền: dùng file bạn sở hữu/được phép.
+  music: {
+    src: '/music/beautiful-in-white.mp3',
+    title: 'Beautiful In White',
+  },
+
   // --- Backend: dán URL Google Apps Script (/exec) vào đây ---
   // Xem hướng dẫn deploy trong README.md. Để trống nếu chưa cấu hình.
   api: {

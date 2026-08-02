@@ -20,15 +20,18 @@ export function Gate() {
     }
   }, [done])
 
-  const open = () => {
-    if (opening) return
-    setOpening(true)
-    // nội dung mờ đi (500ms) → hai cánh trượt (1000ms, trễ 400ms)
-    window.setTimeout(() => {
+  // Tự mở thiệp sau 1s (không cần bấm nút)
+  useEffect(() => {
+    const t1 = window.setTimeout(() => setOpening(true), 1000)
+    const t2 = window.setTimeout(() => {
       window.scrollTo(0, 0)
       setDone(true)
-    }, 1550)
-  }
+    }, 2550)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
+  }, [])
 
   if (done) return null
 
@@ -68,13 +71,6 @@ export function Gate() {
         <p className="mt-4 font-serif text-2xl tracking-[0.2em] text-forest sm:text-3xl">
           {wedding.dateText}
         </p>
-
-        <button
-          onClick={open}
-          className="mt-10 rounded-full border border-sage bg-sage px-9 py-3 text-sm font-medium uppercase tracking-widest text-cream shadow-md transition hover:bg-forest"
-        >
-          Mở thiệp
-        </button>
       </div>
     </div>
   )
