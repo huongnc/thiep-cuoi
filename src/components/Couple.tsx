@@ -12,7 +12,7 @@ function Photo({ person, baseRotate }: { person: Person; baseRotate: number }) {
       <img
         src={person.photo}
         alt={person.name}
-        className="h-72 w-56 rounded-sm object-cover sm:h-80 sm:w-60"
+        className="h-72 w-56 rounded-sm object-cover object-[center_30%] sm:h-80 sm:w-60"
       />
     </Tilt3D>
   )

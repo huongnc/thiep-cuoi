@@ -57,7 +57,7 @@ export const wedding = {
     title: 'Trưởng Nam',
     father: 'Ông Trần Văn Hùng',
     mother: 'Bà Nguyễn Thị Lan',
-    photo: 'https://picsum.photos/seed/groom/1000/1250',
+    photo: '/photos/p7.jpg',
   } as Person,
   bride: {
     name: 'Diễm Quỳnh',
@@ -65,7 +65,7 @@ export const wedding = {
     title: 'Út Nữ',
     father: 'Ông Lê Văn Nam',
     mother: 'Bà Phạm Thị Hoa',
-    photo: 'https://picsum.photos/seed/bride/1000/1250',
+    photo: '/photos/p5.jpg',
   } as Person,
 
   hashtag: 'duongquynh',
@@ -154,12 +154,17 @@ export const wedding = {
 
   // --- Album ảnh (thay bằng ảnh của bạn) ---
   gallery: [
-    'https://picsum.photos/seed/wed1/1600/2000',
-    'https://picsum.photos/seed/wed2/1600/2000',
-    'https://picsum.photos/seed/wed3/1600/2000',
-    'https://picsum.photos/seed/wed4/1600/2000',
-    'https://picsum.photos/seed/wed5/1600/2000',
-    'https://picsum.photos/seed/wed6/1600/2000',
+    '/photos/p1.jpg',
+    '/photos/p6.jpg',
+    '/photos/p3.jpg',
+    '/photos/p5.jpg',
+    '/photos/p7.jpg',
+    '/photos/p2.jpg',
+    '/photos/p4.jpg',
+    '/photos/p8.jpg',
+    '/photos/p9.jpg',
+    '/photos/p10.jpg',
+    '/photos/p11.jpg',
   ],
 
   // --- Lịch trình ngày cưới ---
