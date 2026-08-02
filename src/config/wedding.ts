@@ -209,6 +209,7 @@ export const wedding = {
   music: {
     src: '/music/beautiful-in-white.mp3',
     title: 'Beautiful In White',
+    startAt: 10, // giây bắt đầu phát (tua bỏ đoạn đầu)
   },
 
   // --- Backend: dán URL Google Apps Script (/exec) vào đây ---

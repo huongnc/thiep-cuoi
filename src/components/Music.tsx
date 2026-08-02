@@ -10,9 +10,25 @@ export function Music() {
     if (!audio) return
     audio.volume = 0.5
 
+    // Tua tới giây startAt khi bắt đầu (chỉ 1 lần).
+    let seeked = false
+    const seek = () => {
+      if (seeked) return
+      if (audio.readyState >= 1) {
+        try {
+          audio.currentTime = wedding.music.startAt ?? 0
+          seeked = true
+        } catch {
+          /* metadata chưa sẵn sàng */
+        }
+      }
+    }
+    audio.addEventListener('loadedmetadata', seek)
+
     // Thử phát; chỉ gỡ listener khi phát THÀNH CÔNG (tránh mất nhạc nếu lần đầu bị chặn).
-    const tryPlay = () =>
-      audio
+    const tryPlay = () => {
+      seek()
+      return audio
         .play()
         .then(() => {
           setPlaying(true)
@@ -21,6 +37,7 @@ export function Music() {
         .catch(() => {
           /* bị chặn — chờ tương tác tiếp theo */
         })
+    }
 
     // Thử tự phát sau khi mở thiệp; nếu trình duyệt chặn thì phát ở lần tương tác đầu.
     const timer = window.setTimeout(tryPlay, 2600)
@@ -40,6 +57,7 @@ export function Music() {
     return () => {
       clearTimeout(timer)
       remove()
+      audio.removeEventListener('loadedmetadata', seek)
     }
   }, [])
 
