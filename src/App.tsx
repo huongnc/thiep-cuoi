@@ -1,6 +1,7 @@
 import { Nav } from './components/Nav'
 import { Gate } from './components/Gate'
 import { Music } from './components/Music'
+import { Petals } from './components/Petals'
 import { Couple } from './components/Couple'
 import { Invitation } from './components/Invitation'
 import { LoveStory } from './components/LoveStory'
@@ -18,6 +19,7 @@ export default function App() {
     <div id="top" className="flex min-h-screen justify-center">
       <Gate />
       <Music />
+      <Petals />
       <div className="invite-card relative w-full max-w-3xl">
         <Nav />
         <Couple />

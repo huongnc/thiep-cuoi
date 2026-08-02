@@ -119,3 +119,39 @@ body {
     transition: none;
   }
 }
+
+/* Rơi cánh hoa */
+.petal {
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+@keyframes petal-fall {
+  from {
+    transform: translateY(-10vh);
+  }
+  to {
+    transform: translateY(115vh);
+  }
+}
+.petal-inner {
+  animation-name: petal-sway;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform;
+}
+@keyframes petal-sway {
+  from {
+    transform: translateX(-12px) rotate(-15deg);
+  }
+  to {
+    transform: translateX(12px) rotate(45deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .petal {
+    display: none;
+  }
+}

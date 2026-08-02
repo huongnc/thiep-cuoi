@@ -10,19 +10,22 @@ export function Music() {
     if (!audio) return
     audio.volume = 0.5
 
+    // Thử phát; chỉ gỡ listener khi phát THÀNH CÔNG (tránh mất nhạc nếu lần đầu bị chặn).
     const tryPlay = () =>
       audio
         .play()
-        .then(() => setPlaying(true))
-        .catch(() => setPlaying(false))
+        .then(() => {
+          setPlaying(true)
+          remove()
+        })
+        .catch(() => {
+          /* bị chặn — chờ tương tác tiếp theo */
+        })
 
     // Thử tự phát sau khi mở thiệp; nếu trình duyệt chặn thì phát ở lần tương tác đầu.
     const timer = window.setTimeout(tryPlay, 2600)
 
-    const onGesture = () => {
-      tryPlay()
-      remove()
-    }
+    const onGesture = () => tryPlay()
     const remove = () => {
       window.removeEventListener('pointerdown', onGesture)
       window.removeEventListener('keydown', onGesture)
