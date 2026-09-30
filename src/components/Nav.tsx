@@ -17,9 +17,9 @@ export function Nav() {
     <nav className="fixed left-1/2 top-0 z-40 w-full max-w-3xl -translate-x-1/2 border-b border-sage-light/30 bg-cream/90 backdrop-blur">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3">
         <a href="#top" onClick={() => setOpen(false)} className="font-script text-2xl text-forest">
-          {wedding.groom.name[0]}
+          {wedding.monogram.groom}
           <span className="text-gold">&amp;</span>
-          {wedding.bride.name[0]}
+          {wedding.monogram.bride}
         </a>
 
         {/* Menu desktop */}

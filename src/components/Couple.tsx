@@ -4,15 +4,21 @@ import { CornerFloral, DecorBar } from './ui/Floral'
 import { Tilt3D } from './ui/Tilt3D'
 
 function Photo({ person, baseRotate }: { person: Person; baseRotate: number }) {
+  const isGroom = person.role === 'Chú Rể'
+
   return (
     <Tilt3D
       baseRotate={baseRotate}
-      className="shrink-0 rounded-md border-[3px] border-gold/70 bg-white/60 p-1.5 shadow-xl"
+      className="shrink-0 overflow-hidden rounded-md border-[3px] border-gold/70 bg-white/60 p-1.5 shadow-xl"
     >
       <img
         src={person.photo}
         alt={person.name}
-        className="h-56 w-40 rounded-sm object-cover object-[center_30%] sm:h-80 sm:w-60"
+        className={`h-56 w-40 rounded-sm object-cover sm:h-80 sm:w-60 ${
+          isGroom
+            ? 'origin-[28%_42%] scale-[1.55] object-[28%_42%]'
+            : 'origin-[72%_42%] scale-[1.55] object-[72%_42%]'
+        }`}
       />
     </Tilt3D>
   )
@@ -46,13 +52,11 @@ export function Couple() {
       <CornerFloral className="absolute -bottom-8 -right-10 z-0 h-40 w-40 opacity-80 sm:h-52 sm:w-52" />
 
       <div className="relative z-10 mx-auto max-w-2xl">
-        {/* Chú rể: ảnh trái — chữ phải */}
         <div className="flex items-center gap-4 sm:gap-10">
           <Photo person={wedding.groom} baseRotate={-4} />
           <NameBlock person={wedding.groom} align="left" />
         </div>
 
-        {/* Cô dâu: chữ trái — ảnh phải, lệch xuống */}
         <div className="mt-10 flex items-center justify-end gap-4 sm:mt-8 sm:gap-10">
           <NameBlock person={wedding.bride} align="right" />
           <Photo person={wedding.bride} baseRotate={3} />
