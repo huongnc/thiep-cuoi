@@ -78,7 +78,7 @@ export const wedding = {
   cover: {
     eyebrow: 'Save the Date',
     invite: 'Trân trọng kính mời',
-    image: '/photos/duong-quynh/03.jpg',
+    image: '/photos/duong-quynh/hero.jpg',
     groomName: 'Khánh Dương',
     brideName: 'Diễm Quỳnh',
   },
