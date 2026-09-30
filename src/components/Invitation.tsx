@@ -48,7 +48,7 @@ function FamilyBlock({
   return (
     <div className="rounded-2xl border border-sage-light/40 bg-white/40 px-6 py-8">
       <p className="text-xs uppercase tracking-[0.3em] text-sage">{side}</p>
-      <div className="mt-3 space-y-1 font-serif text-lg text-forest">
+      <div className="mt-3 space-y-1 font-body text-base font-normal leading-7 text-ink sm:text-lg">
         <p>{father}</p>
         <p>{mother}</p>
       </div>

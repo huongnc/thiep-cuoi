@@ -54,7 +54,7 @@ export function Gate() {
           opening ? 'pointer-events-none -translate-y-3 opacity-0' : 'translate-y-0 opacity-100'
         }`}
       >
-        <p className="font-script text-4xl text-cream sm:text-5xl">{wedding.cover.eyebrow}</p>
+        <p className="font-serif text-4xl italic text-cream sm:text-5xl">{wedding.cover.eyebrow}</p>
 
         <h1 className="mt-6 font-serif text-4xl text-cream sm:text-6xl">{wedding.cover.groomName}</h1>
         <span className="my-1 font-script text-3xl text-gold sm:text-4xl">&amp;</span>

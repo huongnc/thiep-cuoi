@@ -81,7 +81,7 @@ export function Countdown() {
       </div>
 
       {left.done && (
-        <p className="mt-8 text-center font-script text-3xl text-gold">
+        <p className="mt-8 text-center font-serif text-3xl italic text-gold">
           Hôm nay là ngày cưới của chúng mình!
         </p>
       )}

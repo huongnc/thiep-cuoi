@@ -45,7 +45,7 @@ export function Section({
       {(eyebrow || title) && (
         <header className="relative z-10 mx-auto mb-10 max-w-2xl text-center">
           {eyebrow && (
-            <p className="font-script text-3xl text-sage sm:text-4xl">{eyebrow}</p>
+            <p className="font-serif text-3xl italic text-sage sm:text-4xl">{eyebrow}</p>
           )}
           {title && (
             <h2 className="mt-1 font-serif text-2xl uppercase tracking-[0.2em] text-forest sm:text-3xl">

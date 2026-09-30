@@ -76,7 +76,7 @@ export function Wishes() {
     >
       {status === 'sent' ? (
         <div className="mx-auto max-w-md text-center">
-          <p className="font-script text-5xl text-gold">Cảm ơn bạn!</p>
+          <p className="font-serif text-5xl italic text-gold">Cảm ơn bạn!</p>
           <p className="mt-5 leading-relaxed text-ink/80">
             Chúng mình đã nhận được phản hồi của bạn. Sự hiện diện và lời chúc của bạn là niềm
             hạnh phúc lớn lao trong ngày trọng đại này.

@@ -4,7 +4,7 @@ import { LeafDivider } from './ui/LeafDivider'
 export function Footer() {
   return (
     <footer className="bg-forest px-6 py-16 text-center text-cream">
-      <p className="font-script text-4xl sm:text-5xl">
+      <p className="font-serif text-4xl italic sm:text-5xl">
         {wedding.groom.name} <span className="text-gold">&amp;</span> {wedding.bride.name}
       </p>
       <p className="mt-3 text-sm uppercase tracking-[0.3em] text-cream/70">{wedding.dateText}</p>

@@ -21,7 +21,7 @@ export function LoveStory() {
                     : 'sm:ml-auto sm:pl-10'
                 }`}
               >
-                <p className="font-script text-2xl text-gold">{item.date}</p>
+                <p className="font-serif text-2xl italic text-gold">{item.date}</p>
                 <h3 className="mt-1 font-serif text-xl text-forest">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/80">{item.text}</p>
               </div>
