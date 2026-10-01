@@ -5,6 +5,7 @@ import { getDisplayCouple } from '../lib/couple'
 export function Gate() {
   const [opening, setOpening] = useState(false)
   const [done, setDone] = useState(false)
+  const [coverReady, setCoverReady] = useState(false)
   const [first, second] = getDisplayCouple()
 
   // Luôn bắt đầu ở đầu trang, không để trình duyệt khôi phục vị trí cuộn cũ
@@ -23,6 +24,8 @@ export function Gate() {
 
   // Tự mở thiệp sau 1s (không cần bấm nút)
   useEffect(() => {
+    if (!coverReady) return
+
     const t1 = window.setTimeout(() => setOpening(true), 1000)
     const t2 = window.setTimeout(() => {
       window.scrollTo(0, 0)
@@ -32,15 +35,17 @@ export function Gate() {
       clearTimeout(t1)
       clearTimeout(t2)
     }
-  }, [])
+  }, [coverReady])
 
   if (done) return null
 
   return (
-    <div className="fixed inset-0 z-[60] overflow-hidden">
+    <div className="fixed inset-0 z-[60] overflow-hidden bg-forest">
       <img
         src={wedding.cover.image}
         alt={`${first.person.name} và ${second.person.name}`}
+        onLoad={() => setCoverReady(true)}
+        onError={() => setCoverReady(true)}
         className={`absolute inset-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-[2500ms] ease-out ${
           opening ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
         }`}
