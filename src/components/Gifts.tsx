@@ -62,7 +62,7 @@ function GiftSheet({ acc, onClose }: { acc: BankAccount; onClose: () => void }) 
             type="button"
             aria-label="Đóng"
             onClick={onClose}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sage-light/50 text-xl text-forest transition hover:bg-sage-light/20"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sage-light/50 text-xl text-forest transition-[background-color,transform] hover:rotate-90 hover:bg-sage-light/20 active:scale-90"
           >
             ×
           </button>
@@ -95,7 +95,7 @@ function GiftButton({ acc, onClick }: { acc: BankAccount; onClick: () => void })
     <button
       type="button"
       onClick={onClick}
-      className="group flex w-full items-center justify-between gap-4 rounded-2xl border border-sage-light/50 bg-white/60 px-5 py-5 text-left shadow-sm transition hover:-translate-y-1 hover:border-sage hover:bg-white/80 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sage/50"
+      className="group flex w-full items-center justify-between gap-4 rounded-2xl border border-sage-light/50 bg-white/60 px-5 py-5 text-left shadow-sm backdrop-blur-sm transition-[border-color,background-color,transform,box-shadow] hover:-translate-y-1 hover:border-sage hover:bg-white/80 hover:shadow-md active:translate-y-0 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sage/50"
     >
       <span>
         <span className="block text-xs uppercase tracking-[0.3em] text-sage">{acc.owner}</span>
@@ -103,7 +103,7 @@ function GiftButton({ acc, onClick }: { acc: BankAccount; onClick: () => void })
       </span>
       <span
         aria-hidden="true"
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage text-xl text-cream transition group-hover:-translate-y-1 group-hover:bg-forest"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage text-xl text-cream transition-[background-color,transform] group-hover:-translate-y-1 group-hover:bg-forest"
       >
         ↑
       </span>

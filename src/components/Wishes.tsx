@@ -24,10 +24,10 @@ function Pills({
           type="button"
           key={o.value}
           onClick={() => onChange(o.value)}
-          className={`flex-1 rounded-full border px-4 py-2.5 text-sm transition ${
-            value === o.value
-              ? 'border-sage bg-sage text-cream shadow-sm'
-              : 'border-sage-light/60 bg-white/60 text-ink/70 hover:border-sage'
+            className={`flex-1 rounded-full border px-4 py-2.5 text-sm transition-[background-color,border-color,color,transform,box-shadow] active:scale-[0.98] ${
+              value === o.value
+              ? 'border-sage bg-sage text-cream shadow-sm hover:-translate-y-0.5'
+              : 'border-sage-light/60 bg-white/60 text-ink/70 hover:-translate-y-0.5 hover:border-sage hover:bg-white/80 hover:shadow-sm'
           }`}
         >
           {o.label}
@@ -90,7 +90,7 @@ export function Wishes() {
           </p>
 
           <form onSubmit={submit} className="mx-auto max-w-lg">
-            <div className="space-y-4 rounded-3xl border border-sage-light/40 bg-white/50 p-6 shadow-sm sm:p-8">
+            <div className="space-y-4 rounded-3xl border border-sage-light/40 bg-white/55 p-6 shadow-sm backdrop-blur-sm sm:p-8">
               <input
                 value={form.name}
                 onChange={(e) => update('name', e.target.value)}
@@ -140,7 +140,7 @@ export function Wishes() {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="rounded-full bg-sage px-9 py-3 text-sm font-medium uppercase tracking-widest text-cream transition hover:bg-forest disabled:opacity-60"
+                  className="rounded-full bg-sage px-9 py-3 text-sm font-medium uppercase tracking-widest text-cream transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:bg-forest hover:shadow-md active:translate-y-0 active:scale-95 disabled:opacity-60"
                 >
                   {status === 'sending' ? 'Đang gửi...' : 'Gửi xác nhận'}
                 </button>

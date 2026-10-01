@@ -27,7 +27,7 @@ export function Section({
     <section
       id={id}
       ref={ref}
-      className={`reveal relative overflow-hidden px-5 py-16 sm:py-20 ${className}`}
+      className={`reveal relative scroll-mt-20 overflow-hidden px-5 py-16 sm:py-20 ${className}`}
     >
       {decor && (
         <>

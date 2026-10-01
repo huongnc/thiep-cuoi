@@ -15,7 +15,7 @@ export function Nav() {
   const [first, second] = getDisplayCouple()
 
   return (
-    <nav className="fixed left-1/2 top-0 z-40 w-full max-w-3xl -translate-x-1/2 border-b border-sage-light/30 bg-cream/90 backdrop-blur">
+    <nav className="fixed left-1/2 top-0 z-40 w-full max-w-3xl -translate-x-1/2 border-b border-sage-light/30 bg-cream/90 shadow-[0_6px_20px_-12px_rgba(64,81,59,0.55)] backdrop-blur">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3">
         <a href="#top" onClick={() => setOpen(false)} className="font-serif text-2xl text-forest">
           {first.monogram}
@@ -27,8 +27,12 @@ export function Nav() {
         <ul className="hidden gap-5 text-xs uppercase tracking-widest text-ink/70 sm:flex">
           {LINKS.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="transition hover:text-sage">
+              <a
+                href={l.href}
+                className="group relative py-1 transition-colors hover:text-sage"
+              >
                 {l.label}
+                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-sage transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             </li>
           ))}
@@ -39,7 +43,7 @@ export function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
           aria-expanded={open}
-          className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 text-forest sm:hidden"
+          className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 text-forest transition-transform active:scale-90 sm:hidden"
         >
           <span
             className={`h-0.5 w-6 bg-current transition-transform duration-300 ${open ? 'translate-y-2 rotate-45' : ''}`}
@@ -63,7 +67,7 @@ export function Nav() {
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block border-b border-sage-light/20 py-3 transition hover:text-sage"
+                className="block border-b border-sage-light/20 py-3 transition-[color,transform] hover:translate-x-1 hover:text-sage"
               >
                 {l.label}
               </a>

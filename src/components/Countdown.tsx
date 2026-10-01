@@ -26,7 +26,7 @@ function MonthCalendar() {
   const headers = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']
 
   return (
-    <div className="mx-auto mt-12 max-w-sm rounded-2xl border border-sage-light/40 bg-white/50 p-6">
+    <div className="mx-auto mt-10 max-w-sm rounded-2xl border border-sage-light/40 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
       <p className="mb-4 text-center font-serif text-lg text-forest">
         Tháng {month + 1} / {year}
       </p>
@@ -58,11 +58,15 @@ export function Countdown() {
   const left = useCountdown(wedding.weddingDate)
 
   return (
-    <div
-      className="relative overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url(${wedding.scheduleCover})` }}
-    >
-      <div className="absolute inset-0 bg-cream/75" aria-hidden="true" />
+    <div className="relative overflow-hidden bg-cream">
+      <img
+        src={wedding.scheduleCover}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-70"
+      />
+      <div className="absolute inset-0 bg-cream/75 backdrop-blur-[2px]" aria-hidden="true" />
       <Section
         id="countdown"
         eyebrow="Cùng đếm ngược"
@@ -73,7 +77,7 @@ export function Countdown() {
           {UNITS.map((u) => (
             <div
               key={u.key}
-              className="flex h-20 w-20 flex-col items-center justify-center rounded-2xl bg-white/80 shadow-sm sm:h-24 sm:w-24"
+              className="flex h-20 w-20 flex-col items-center justify-center rounded-2xl border border-white/70 bg-white/80 shadow-sm backdrop-blur-sm transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-md sm:h-24 sm:w-24"
             >
               <span className="font-serif text-3xl text-forest sm:text-4xl">
                 {String(left[u.key]).padStart(2, '0')}

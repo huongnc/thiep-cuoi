@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
 }
 
 body {
@@ -32,12 +33,19 @@ body {
   background-color: #dcd8cc;
   color: var(--color-ink);
   font-family: var(--font-body);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Khung thiệp: cột hẹp căn giữa trên nền */
 .invite-card {
+  min-height: 100vh;
   background-color: var(--color-cream);
   box-shadow: 0 20px 60px -20px rgba(60, 70, 58, 0.45);
 }
@@ -111,6 +119,19 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
   .reveal,
   .reveal-left,
   .reveal-right {

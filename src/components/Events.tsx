@@ -44,7 +44,7 @@ function EventBlock({ ev }: { ev: WeddingEvent }) {
         href={ev.mapUrl || `https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
         target="_blank"
         rel="noreferrer"
-        className="mt-5 inline-flex items-center gap-2 rounded-full border border-sage px-6 py-2 text-xs uppercase tracking-widest text-sage transition hover:bg-sage hover:text-cream"
+        className="mt-5 inline-flex items-center gap-2 rounded-full border border-sage px-6 py-2 text-xs uppercase tracking-widest text-sage transition-[background-color,color,transform,box-shadow] hover:-translate-y-0.5 hover:bg-sage hover:text-cream hover:shadow-md active:translate-y-0 active:scale-95"
       >
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" />

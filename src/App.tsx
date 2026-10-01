@@ -25,19 +25,21 @@ export default function App() {
         <Couple />
         <Invitation />
         <LoveStory />
-        <DecorBar />
+        <DecorBar className="h-16 sm:h-20" />
         <Gallery />
         <Events />
         <Countdown />
-        <div className="relative overflow-hidden px-5 pb-8 pt-6 sm:pb-10 sm:pt-8">
-          <img
-            src={wedding.schedulePhoto}
-            alt="Ảnh cưới"
-            loading="lazy"
-            className="mx-auto block aspect-[2/3] w-full max-w-3xl rounded-3xl object-cover shadow-xl"
-          />
-        </div>
-        <DecorBar />
+        <figure className="relative px-5 py-10 sm:px-8 sm:py-14">
+          <div className="mx-auto max-w-2xl overflow-hidden rounded-[2rem] border border-sage-light/35 bg-white/40 p-2 shadow-xl">
+            <img
+              src={wedding.schedulePhoto}
+              alt="Khoảnh khắc trong ngày cưới"
+              loading="lazy"
+              className="block aspect-[3/2] w-full rounded-[1.5rem] object-cover transition-transform duration-700 hover:scale-[1.02]"
+            />
+          </div>
+        </figure>
+        <DecorBar className="h-16 sm:h-20" />
         <Gifts />
         <Wishes />
         <Footer />

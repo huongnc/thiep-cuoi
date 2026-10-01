@@ -17,18 +17,19 @@ export function Gallery() {
           return (
             <Tilt3D key={src} max={9} className="rounded-xl">
               <button
+                type="button"
                 onClick={() => setActive(i)}
-                className="relative block w-full overflow-hidden rounded-xl shadow-md focus:outline-none"
+                className="group relative block w-full overflow-hidden rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-sage/60 focus:ring-offset-2 focus:ring-offset-cream"
                 aria-label={`Xem ảnh ${i + 1}`}
               >
                 <img
                   src={src}
                   alt={`Ảnh cưới ${i + 1}`}
                   loading="lazy"
-                  className="aspect-[4/5] w-full object-cover"
+                  className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105"
                 />
                 {isLast && (
-                  <span className="absolute inset-0 flex items-center justify-center bg-forest/50 font-serif text-4xl text-cream">
+                  <span className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-forest/70 via-forest/35 to-transparent font-serif text-4xl text-cream">
                     +{extra}
                   </span>
                 )}
@@ -87,7 +88,7 @@ function Lightbox({
     >
       <button
         onClick={onClose}
-        className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-2xl text-cream transition hover:bg-cream/20 sm:right-6 sm:top-6"
+        className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-2xl text-cream transition-[background-color,transform] hover:rotate-90 hover:bg-cream/20 active:scale-90 sm:right-6 sm:top-6"
         aria-label="Đóng"
       >
         ×
@@ -100,7 +101,7 @@ function Lightbox({
             e.stopPropagation()
             onNav(prev)
           }}
-          className="absolute left-1 flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-3xl text-cream/90 transition hover:bg-cream/20 sm:left-4"
+          className="absolute left-1 flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-3xl text-cream/90 transition-[background-color,transform] hover:-translate-x-1 hover:bg-cream/20 active:scale-90 sm:left-4"
           aria-label="Ảnh trước"
         >
           ‹
@@ -116,7 +117,7 @@ function Lightbox({
             e.stopPropagation()
             onNav(next)
           }}
-          className="absolute right-1 flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-3xl text-cream/90 transition hover:bg-cream/20 sm:right-4"
+          className="absolute right-1 flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-3xl text-cream/90 transition-[background-color,transform] hover:translate-x-1 hover:bg-cream/20 active:scale-90 sm:right-4"
           aria-label="Ảnh sau"
         >
           ›
@@ -133,7 +134,7 @@ function Lightbox({
             key={src}
             onClick={() => onNav(i)}
             aria-label={`Ảnh ${i + 1}`}
-            className="shrink-0"
+            className="shrink-0 transition-transform hover:-translate-y-1 active:scale-90"
           >
             <img
               src={src}

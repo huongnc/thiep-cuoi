@@ -44,7 +44,7 @@ export function Couple() {
     <section
       id="couple"
       ref={ref}
-      className="reveal relative overflow-hidden px-6 py-20 sm:py-24"
+      className="reveal relative scroll-mt-20 overflow-hidden px-6 py-20 sm:py-24"
     >
       {/* Dải hồ sen full-width phía sau */}
       <DecorBar className="absolute inset-x-0 top-[42%] z-0 h-28 sm:h-32" />

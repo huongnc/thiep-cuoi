@@ -19,7 +19,7 @@ export function Footer() {
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="mt-8 rounded-full border border-cream/40 px-6 py-2 text-xs uppercase tracking-widest text-cream/80 transition hover:bg-cream/10"
+        className="mt-8 rounded-full border border-cream/40 px-6 py-2 text-xs uppercase tracking-widest text-cream/80 transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-cream/10 active:translate-y-0 active:scale-95"
       >
         Về đầu trang
       </button>

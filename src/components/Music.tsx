@@ -79,7 +79,7 @@ export function Music() {
         onClick={toggle}
         aria-label={wedding.music.title}
         title={wedding.music.title}
-        className="fixed bottom-5 right-5 z-[70] flex h-12 w-12 items-center justify-center rounded-full bg-sage/90 text-cream shadow-lg backdrop-blur transition hover:bg-forest"
+        className="fixed bottom-5 right-5 z-[70] flex h-12 w-12 items-center justify-center rounded-full bg-sage/90 text-cream shadow-lg backdrop-blur transition-[background-color,transform,box-shadow] hover:-translate-y-1 hover:bg-forest hover:shadow-xl active:translate-y-0 active:scale-90"
       >
         <svg
           width="20"
