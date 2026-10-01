@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { wedding } from '../config/wedding'
+import { getDisplayCouple } from '../lib/couple'
 
 export function Gate() {
   const [opening, setOpening] = useState(false)
   const [done, setDone] = useState(false)
+  const [first, second] = getDisplayCouple()
 
   // Luôn bắt đầu ở đầu trang, không để trình duyệt khôi phục vị trí cuộn cũ
   useEffect(() => {
@@ -38,7 +40,7 @@ export function Gate() {
     <div className="fixed inset-0 z-[60] overflow-hidden">
       <img
         src={wedding.cover.image}
-        alt={`${wedding.groom.name} và ${wedding.bride.name}`}
+        alt={`${first.person.name} và ${second.person.name}`}
         className={`absolute inset-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-[2500ms] ease-out ${
           opening ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
         }`}
@@ -56,9 +58,9 @@ export function Gate() {
       >
         <p className="font-serif text-4xl italic text-cream sm:text-5xl">{wedding.cover.eyebrow}</p>
 
-        <h1 className="mt-6 font-serif text-4xl text-cream sm:text-6xl">{wedding.cover.groomName}</h1>
+        <h1 className="mt-6 font-serif text-4xl text-cream sm:text-6xl">{first.person.name}</h1>
         <span className="my-1 font-script text-3xl text-gold sm:text-4xl">&amp;</span>
-        <h1 className="font-serif text-4xl text-cream sm:text-6xl">{wedding.cover.brideName}</h1>
+        <h1 className="font-serif text-4xl text-cream sm:text-6xl">{second.person.name}</h1>
 
         <p className="mt-6 text-sm uppercase tracking-[0.3em] text-cream/85">{wedding.cover.invite}</p>
         <p className="mt-4 font-serif text-2xl tracking-[0.2em] text-cream sm:text-3xl">

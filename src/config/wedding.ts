@@ -29,6 +29,8 @@ export interface StoryItem {
   date: string
   title: string
   text: string
+  quote?: string
+  outro?: string
 }
 
 export interface ScheduleItem {
@@ -122,24 +124,21 @@ export const wedding = {
   // --- Câu chuyện tình yêu ---
   story: [
     {
-      date: 'Mùa Thu 2008',
-      title: 'Lần đầu gặp gỡ',
-      text: 'Khánh Dương gặp Diễm Quỳnh lần đầu khi cả hai vừa bước chân vào giảng đường đại học. Một ánh nhìn, và câu chuyện của chúng mình bắt đầu.',
+      date: '24.05.2022',
+      title: 'Ngày mình gặp nhau',
+      text: 'Giữa những ngày tháng bình thường, chúng mình gặp nhau. Từ một cuộc gặp gỡ, những câu chuyện cứ thế dài thêm, và chẳng biết từ lúc nào, hai đứa đã trở thành một phần trong cuộc sống của nhau.',
     },
     {
-      date: 'Mùa Xuân 2010',
-      title: 'Cái nắm tay đầu tiên',
-      text: 'Sau bao ngày ngại ngùng, Khánh Dương đã lấy hết can đảm để ngỏ lời. Từ đó, hai đứa chẳng còn rời xa nhau.',
+      date: '14.06.2026',
+      title: 'Ngày anh cầu hôn',
+      text: 'Sau những tháng ngày cùng nhau đi qua vui buồn, anh chọn một ngày thật đẹp để hỏi em một câu thật giản dị:',
+      quote: 'Em đồng ý về chung một nhà với anh nhé?',
+      outro: 'Và câu trả lời ấy đã mở ra chương mới của câu chuyện chúng mình.',
     },
     {
-      date: 'Mùa Hè 2025',
-      title: 'Lời cầu hôn',
-      text: 'Dưới ánh hoàng hôn, một chiếc nhẫn và một lời hứa trọn đời. Diễm Quỳnh đã nói "Đồng ý".',
-    },
-    {
-      date: 'Mùa Đông 2026',
-      title: 'Về chung một nhà',
-      text: 'Và giờ đây, chúng mình chính thức viết tiếp chương mới của cuộc đời — cùng nhau, mãi mãi.',
+      date: '13.10.2026',
+      title: 'Ngày mình về chung một nhà',
+      text: 'Từ hai người xa lạ, chúng mình trở thành một gia đình. Không cần một câu chuyện quá hoàn hảo, chỉ cần từ hôm nay và những ngày sau nữa, vẫn luôn có một người ở bên để cùng nhau đi hết chặng đường.',
     },
   ] as StoryItem[],
 

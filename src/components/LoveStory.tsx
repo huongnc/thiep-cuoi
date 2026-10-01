@@ -1,7 +1,10 @@
 import { wedding } from '../config/wedding'
+import { getDisplayCouple } from '../lib/couple'
 import { Section } from './ui/Section'
 
 export function LoveStory() {
+  const [first, second] = getDisplayCouple()
+
   return (
     <Section id="story" eyebrow="Our Story" title="Câu chuyện tình yêu">
       <div className="relative mx-auto max-w-2xl">
@@ -24,9 +27,24 @@ export function LoveStory() {
                 <p className="font-serif text-2xl italic text-gold">{item.date}</p>
                 <h3 className="mt-1 font-serif text-xl text-forest">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/80">{item.text}</p>
+                {item.quote && (
+                  <p className="mt-3 font-serif text-base font-semibold italic leading-relaxed text-forest">
+                    “{item.quote}”
+                  </p>
+                )}
+                {item.outro && (
+                  <p className="mt-2 text-sm leading-relaxed text-ink/80">{item.outro}</p>
+                )}
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-14 text-center">
+          <p className="font-serif text-lg text-forest">
+            {first.person.name} ♡ {second.person.name}
+          </p>
+          <p className="mt-2 font-script text-2xl text-gold">And so, our forever begins…</p>
         </div>
       </div>
     </Section>

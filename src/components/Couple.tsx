@@ -1,5 +1,6 @@
-import { wedding, type Person } from '../config/wedding'
+import { type Person } from '../config/wedding'
 import { useReveal } from '../hooks/useReveal'
+import { getDisplayCouple } from '../lib/couple'
 import { CornerFloral, DecorBar } from './ui/Floral'
 import { Tilt3D } from './ui/Tilt3D'
 
@@ -37,6 +38,8 @@ function NameBlock({ person, align }: { person: Person; align: 'left' | 'right' 
 
 export function Couple() {
   const ref = useReveal<HTMLElement>()
+  const [first, second] = getDisplayCouple()
+
   return (
     <section
       id="couple"
@@ -53,13 +56,13 @@ export function Couple() {
 
       <div className="relative z-10 mx-auto max-w-2xl">
         <div className="flex items-center gap-4 sm:gap-10">
-          <Photo person={wedding.groom} baseRotate={-4} />
-          <NameBlock person={wedding.groom} align="left" />
+          <Photo person={first.person} baseRotate={-4} />
+          <NameBlock person={first.person} align="left" />
         </div>
 
         <div className="mt-10 flex items-center justify-end gap-4 sm:mt-8 sm:gap-10">
-          <NameBlock person={wedding.bride} align="right" />
-          <Photo person={wedding.bride} baseRotate={3} />
+          <NameBlock person={second.person} align="right" />
+          <Photo person={second.person} baseRotate={3} />
         </div>
       </div>
     </section>

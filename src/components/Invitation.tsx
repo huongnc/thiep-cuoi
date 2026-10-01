@@ -1,9 +1,9 @@
 import { wedding } from '../config/wedding'
+import { getDisplayCouple } from '../lib/couple'
 import { Section } from './ui/Section'
 
 export function Invitation() {
-  const groomFamily = wedding.events.find((e) => e.side === 'Nhà Trai')
-  const brideFamily = wedding.events.find((e) => e.side === 'Nhà Gái')
+  const couple = getDisplayCouple()
 
   return (
     <Section id="invitation" eyebrow="Thư mời" title="Trân trọng báo tin">
@@ -16,18 +16,20 @@ export function Invitation() {
         <p className="mt-10 leading-relaxed text-ink/85">{wedding.invitation.body}</p>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
-          <FamilyBlock
-            side="Nhà Trai"
-            father={wedding.groom.father}
-            mother={wedding.groom.mother}
-            address={groomFamily?.address}
-          />
-          <FamilyBlock
-            side="Nhà Gái"
-            father={wedding.bride.father}
-            mother={wedding.bride.mother}
-            address={brideFamily?.address}
-          />
+          {couple.map(({ side, person }) => {
+            const eventSide = side === 'groom' ? 'Nhà Trai' : 'Nhà Gái'
+            const familyEvent = wedding.events.find((event) => event.side === eventSide)
+
+            return (
+              <FamilyBlock
+                key={side}
+                side={eventSide}
+                father={person.father}
+                mother={person.mother}
+                address={familyEvent?.address}
+              />
+            )
+          })}
         </div>
       </div>
     </Section>

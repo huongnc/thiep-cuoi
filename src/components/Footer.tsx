@@ -1,11 +1,14 @@
 import { wedding } from '../config/wedding'
+import { getDisplayCouple } from '../lib/couple'
 import { LeafDivider } from './ui/LeafDivider'
 
 export function Footer() {
+  const [first, second] = getDisplayCouple()
+
   return (
     <footer className="bg-forest px-6 py-16 text-center text-cream">
       <p className="font-serif text-4xl italic sm:text-5xl">
-        {wedding.groom.name} <span className="text-gold">&amp;</span> {wedding.bride.name}
+        {first.person.name} <span className="text-gold">&amp;</span> {second.person.name}
       </p>
       <p className="mt-3 text-sm uppercase tracking-[0.3em] text-cream/70">{wedding.dateText}</p>
 

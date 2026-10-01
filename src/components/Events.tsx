@@ -1,4 +1,5 @@
 import { wedding, type WeddingEvent } from '../config/wedding'
+import { getDisplayCouple } from '../lib/couple'
 import { Section } from './ui/Section'
 import { LeafDivider } from './ui/LeafDivider'
 
@@ -56,10 +57,22 @@ function EventBlock({ ev }: { ev: WeddingEvent }) {
 }
 
 export function Events() {
+  const couple = getDisplayCouple()
+  const orderedSides = couple.map(({ side }) => (side === 'groom' ? 'Nhà Trai' : 'Nhà Gái'))
+  const orderedEvents = orderedSides.flatMap((eventSide) =>
+    wedding.events.filter((event) => event.side === eventSide),
+  )
+  const events = [
+    ...orderedEvents,
+    ...wedding.events.filter(
+      (event) => event.side !== 'Nhà Trai' && event.side !== 'Nhà Gái',
+    ),
+  ]
+
   return (
     <Section id="events" eyebrow="Sự kiện" title="Thông tin lễ cưới">
       <div className="mx-auto max-w-md">
-        {wedding.events.map((ev, i) => (
+        {events.map((ev, i) => (
           <div key={ev.key}>
             {i > 0 && <LeafDivider className="my-12" />}
             <EventBlock ev={ev} />
