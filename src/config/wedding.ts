@@ -205,7 +205,8 @@ export const wedding = {
   // --- Backend: dán URL Google Apps Script (/exec) vào đây ---
   // Xem hướng dẫn deploy trong README.md. Để trống nếu chưa cấu hình.
   api: {
-    endpoint: '',
+    endpoint:
+      'https://script.google.com/macros/s/AKfycbw_l5ZXlzem4M90_fCiBsrhz9V37pdXVDSIa7qjTfnsjNNk7Y8ovXJ0182e-mC09RZP/exec',
   },
 }
 

@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { wedding } from '../config/wedding'
 import { Section } from './ui/Section'
 import { postToSheet } from '../lib/sheet'
+import { getInvitationType } from '../lib/couple'
 
 interface Opt {
   value: string
@@ -54,12 +55,12 @@ export function Wishes() {
     if (!form.name.trim()) return
     setStatus('sending')
     await postToSheet({
-      type: 'rsvp',
       name: form.name.trim(),
       phone: form.phone.trim(),
       attending: form.attending,
       guests: form.guests,
       message: form.message.trim(),
+      type: getInvitationType(),
     })
     setStatus('sent')
   }

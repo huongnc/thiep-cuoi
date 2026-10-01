@@ -30,3 +30,19 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+## Lưu xác nhận tham dự vào Google Sheet
+
+Form “Xác nhận tham dự” gửi các trường `name`, `phone`, `attending`, `guests`, `message` và `type` tới Google Apps Script. `type` được tự động gán theo đường dẫn thiệp:
+
+- `/codau` → `codau`
+- `/chure` hoặc `/` → `chure`
+
+Để bật lưu dữ liệu:
+
+1. Tạo một Google Sheet mới và mở **Extensions → Apps Script**.
+2. Dán nội dung file `scripts/google-apps-script.gs` vào Apps Script.
+3. Deploy dạng **Web app**, chọn **Execute as: Me** và **Who has access: Anyone**.
+4. Dán URL `/exec` nhận được vào `wedding.api.endpoint` trong `src/config/wedding.ts`.
+
+Script sẽ tự tạo sheet `RSVP` với cột `type` ở cuối: `timestamp`, `name`, `phone`, `attending`, `guests`, `message`, `type`.

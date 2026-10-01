@@ -1,6 +1,7 @@
 import { wedding, type Person } from '../config/wedding.ts'
 
 export type CoupleSide = 'groom' | 'bride'
+export type InvitationType = 'codau' | 'chure'
 
 export interface DisplayCoupleMember {
   side: CoupleSide
@@ -19,6 +20,10 @@ export function getPrimaryCoupleSide(pathname?: string): CoupleSide {
   if (segments.includes('codau')) return 'bride'
   if (segments.includes('chure')) return 'groom'
   return 'groom'
+}
+
+export function getInvitationType(pathname?: string): InvitationType {
+  return getPrimaryCoupleSide(pathname) === 'bride' ? 'codau' : 'chure'
 }
 
 export function getDisplayCouple(pathname?: string): DisplayCoupleMember[] {
