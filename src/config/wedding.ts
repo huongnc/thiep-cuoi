@@ -91,8 +91,8 @@ export const wedding = {
   },
 
   invitation: {
-    heading: 'Trân trọng báo tin',
-    body: 'Trong niềm hân hoan, hai gia đình chúng tôi trân trọng báo tin lễ thành hôn của hai con. Sự hiện diện của quý vị là niềm vinh hạnh và là lời chúc phúc ý nghĩa nhất cho ngày trọng đại của chúng tôi.',
+    heading: 'Trân trọng kính mời',
+    body: 'Trong niềm hân hoan, hai gia đình chúng tôi Trân trọng kính mời lễ thành hôn của hai con. Sự hiện diện của quý vị là niềm vinh hạnh và là lời chúc phúc ý nghĩa nhất cho ngày trọng đại của chúng tôi.',
   },
 
   // --- Sự kiện: Lễ Vu Quy / Lễ Thành Hôn / Tiệc Cưới ---

@@ -6,7 +6,7 @@ export function Invitation() {
   const couple = getDisplayCouple()
 
   return (
-    <Section id="invitation" eyebrow="Thư mời" title="Trân trọng báo tin">
+    <Section id="invitation" eyebrow="Thư mời" title="Trân trọng kính mời">
       <div className="mx-auto max-w-2xl text-center">
         <p className="font-serif text-lg italic leading-relaxed text-ink/85 sm:text-xl">
           “{wedding.quote.text}”
