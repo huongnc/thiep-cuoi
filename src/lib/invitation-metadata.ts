@@ -17,7 +17,7 @@ export function getInvitationMetadata(pathname = '/'): InvitationMetadata {
   const siteName = `${first.person.name} & ${second.person.name}`
 
   return {
-    title: `${siteName} | Save the Date`,
+    title: `${siteName} | Trân trọng kính mời`,
     description: `Trân trọng kính mời bạn đến chung vui trong ngày thành hôn của ${siteName}.`,
     siteName,
     url: new URL(pathname || '/', SITE_ORIGIN).toString(),

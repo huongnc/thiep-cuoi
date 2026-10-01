@@ -58,35 +58,41 @@ export function Countdown() {
   const left = useCountdown(wedding.weddingDate)
 
   return (
-    <Section
-      id="countdown"
-      eyebrow="Cùng đếm ngược"
-      title="Đến ngày trọng đại"
-      className="bg-cream-dark/50"
+    <div
+      className="relative overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${wedding.scheduleCover})` }}
     >
-      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
-        {UNITS.map((u) => (
-          <div
-            key={u.key}
-            className="flex h-20 w-20 flex-col items-center justify-center rounded-2xl bg-white/70 shadow-sm sm:h-24 sm:w-24"
-          >
-            <span className="font-serif text-3xl text-forest sm:text-4xl">
-              {String(left[u.key]).padStart(2, '0')}
-            </span>
-            <span className="mt-1 text-[10px] uppercase tracking-widest text-sage">
-              {u.label}
-            </span>
-          </div>
-        ))}
-      </div>
+      <div className="absolute inset-0 bg-cream/75" aria-hidden="true" />
+      <Section
+        id="countdown"
+        eyebrow="Cùng đếm ngược"
+        title="Đến ngày trọng đại"
+        className="bg-transparent"
+      >
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
+          {UNITS.map((u) => (
+            <div
+              key={u.key}
+              className="flex h-20 w-20 flex-col items-center justify-center rounded-2xl bg-white/80 shadow-sm sm:h-24 sm:w-24"
+            >
+              <span className="font-serif text-3xl text-forest sm:text-4xl">
+                {String(left[u.key]).padStart(2, '0')}
+              </span>
+              <span className="mt-1 text-[10px] uppercase tracking-widest text-sage">
+                {u.label}
+              </span>
+            </div>
+          ))}
+        </div>
 
-      {left.done && (
-        <p className="mt-8 text-center font-serif text-3xl italic text-gold">
-          Hôm nay là ngày cưới của chúng mình!
-        </p>
-      )}
+        {left.done && (
+          <p className="mt-8 text-center font-serif text-3xl italic text-gold">
+            Hôm nay là ngày cưới của chúng mình!
+          </p>
+        )}
 
-      <MonthCalendar />
-    </Section>
+        <MonthCalendar />
+      </Section>
+    </div>
   )
 }

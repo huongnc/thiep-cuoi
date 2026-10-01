@@ -78,8 +78,8 @@ export const wedding = {
   dateTextFull: 'Thứ Ba, ngày 13 tháng 10 năm 2026',
 
   cover: {
-    eyebrow: 'Save the Date',
-    invite: 'Trân trọng kính mời',
+    eyebrow: 'Trân trọng kính mời',
+    invite: '',
     image: '/photos/duong-quynh/hero.jpg',
     groomName: 'Khánh Dương',
     brideName: 'Diễm Quỳnh',
@@ -122,6 +122,9 @@ export const wedding = {
   ] as WeddingEvent[],
 
   // --- Câu chuyện tình yêu ---
+  storyCover: '/photos/duong-quynh/BEE_2129.jpg',
+  scheduleCover: '/photos/duong-quynh/cover.jpg',
+  schedulePhoto: '/photos/duong-quynh/05.jpg',
   story: [
     {
       date: '24.05.2022',

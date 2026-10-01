@@ -1,4 +1,5 @@
 import { Nav } from './components/Nav'
+import { wedding } from './config/wedding'
 import { Gate } from './components/Gate'
 import { Music } from './components/Music'
 import { Petals } from './components/Petals'
@@ -8,7 +9,6 @@ import { LoveStory } from './components/LoveStory'
 import { Gallery } from './components/Gallery'
 import { Events } from './components/Events'
 import { Countdown } from './components/Countdown'
-import { Schedule } from './components/Schedule'
 import { Wishes } from './components/Wishes'
 import { Gifts } from './components/Gifts'
 import { Footer } from './components/Footer'
@@ -29,7 +29,14 @@ export default function App() {
         <Gallery />
         <Events />
         <Countdown />
-        <Schedule />
+        <div className="relative overflow-hidden px-5 pb-8 pt-6 sm:pb-10 sm:pt-8">
+          <img
+            src={wedding.schedulePhoto}
+            alt="Ảnh cưới"
+            loading="lazy"
+            className="mx-auto block aspect-[2/3] w-full max-w-3xl rounded-3xl object-cover shadow-xl"
+          />
+        </div>
         <DecorBar />
         <Gifts />
         <Wishes />

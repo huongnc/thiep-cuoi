@@ -6,47 +6,51 @@ export function LoveStory() {
   const [first, second] = getDisplayCouple()
 
   return (
-    <Section id="story" eyebrow="Our Story" title="Câu chuyện tình yêu">
-      <div className="relative mx-auto max-w-2xl">
-        {/* Đường dọc timeline */}
-        <span className="absolute left-4 top-0 h-full w-px -translate-x-1/2 bg-sage-light/50 sm:left-1/2" />
-
-        <div className="space-y-12">
-          {wedding.story.map((item, i) => (
-            <div key={item.title} className="relative">
-              {/* Chấm luôn nằm chính giữa đường kẻ */}
-              <span className="absolute left-4 top-2 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-sage ring-4 ring-cream sm:left-1/2" />
-
-              <div
-                className={`pl-10 sm:w-1/2 ${
-                  i % 2 === 0
-                    ? 'sm:pl-0 sm:pr-10 sm:text-right'
-                    : 'sm:ml-auto sm:pl-10'
-                }`}
-              >
-                <p className="font-serif text-2xl italic text-gold">{item.date}</p>
-                <h3 className="mt-1 font-serif text-xl text-forest">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/80">{item.text}</p>
-                {item.quote && (
-                  <p className="mt-3 font-serif text-base font-semibold italic leading-relaxed text-forest">
-                    “{item.quote}”
-                  </p>
-                )}
-                {item.outro && (
-                  <p className="mt-2 text-sm leading-relaxed text-ink/80">{item.outro}</p>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-14 text-center">
-          <p className="font-serif text-lg text-forest">
-            {first.person.name} ♡ {second.person.name}
-          </p>
-          <p className="mt-2 font-script text-2xl text-gold">And so, our forever begins…</p>
-        </div>
+    <>
+      <div className="relative overflow-hidden px-5 pb-8 pt-6 sm:pb-10 sm:pt-8">
+        <img
+          src={wedding.storyCover}
+          alt={`${first.person.name} và ${second.person.name}`}
+          loading="lazy"
+          className="mx-auto block aspect-[2/3] w-full max-w-3xl rounded-3xl object-cover shadow-xl"
+        />
       </div>
-    </Section>
+
+      <Section id="story" eyebrow="Our Story" title="Câu chuyện tình yêu">
+        <div className="relative mx-auto max-w-2xl">
+          {/* Đường dọc timeline */}
+          <span className="absolute left-4 top-0 h-full w-px -translate-x-1/2 bg-sage-light/50 sm:left-1/2" />
+
+          <div className="space-y-12">
+            {wedding.story.map((item, i) => (
+              <div key={item.title} className="relative">
+                {/* Chấm luôn nằm chính giữa đường kẻ */}
+                <span className="absolute left-4 top-2 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-sage ring-4 ring-cream sm:left-1/2" />
+
+                <div
+                  className={`pl-10 sm:w-1/2 ${
+                    i % 2 === 0
+                      ? 'sm:pl-0 sm:pr-10 sm:text-right'
+                      : 'sm:ml-auto sm:pl-10'
+                  }`}
+                >
+                  <p className="font-serif text-2xl italic text-gold">{item.date}</p>
+                  <h3 className="mt-1 font-serif text-xl text-forest">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/80">{item.text}</p>
+                  {item.quote && (
+                    <p className="mt-3 font-serif text-base font-semibold italic leading-relaxed text-forest">
+                      “{item.quote}”
+                    </p>
+                  )}
+                  {item.outro && (
+                    <p className="mt-2 text-sm leading-relaxed text-ink/80">{item.outro}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+    </>
   )
 }

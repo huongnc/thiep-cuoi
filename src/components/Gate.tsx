@@ -67,7 +67,11 @@ export function Gate() {
         <span className="my-1 font-script text-3xl text-gold sm:text-4xl">&amp;</span>
         <h1 className="font-serif text-4xl text-cream sm:text-6xl">{second.person.name}</h1>
 
-        <p className="mt-6 text-sm uppercase tracking-[0.3em] text-cream/85">{wedding.cover.invite}</p>
+        {wedding.cover.invite && (
+          <p className="mt-6 text-sm uppercase tracking-[0.3em] text-cream/85">
+            {wedding.cover.invite}
+          </p>
+        )}
         <p className="mt-4 font-serif text-2xl tracking-[0.2em] text-cream sm:text-3xl">
           {wedding.dateText}
         </p>
