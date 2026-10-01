@@ -1,4 +1,4 @@
-import { wedding, type Person } from '../config/wedding'
+import { wedding, type Person } from '../config/wedding.ts'
 
 export type CoupleSide = 'groom' | 'bride'
 
@@ -13,7 +13,7 @@ export interface DisplayCoupleMember {
  * /codau puts the bride first; /chure and the root path put the groom first.
  */
 export function getPrimaryCoupleSide(pathname?: string): CoupleSide {
-  const currentPath = pathname ?? (typeof window === 'undefined' ? '/' : window.location.pathname)
+  const currentPath = pathname ?? getCurrentPathname()
   const segments = currentPath.toLowerCase().split('/').filter(Boolean)
 
   if (segments.includes('codau')) return 'bride'
@@ -31,4 +31,11 @@ export function getDisplayCouple(pathname?: string): DisplayCoupleMember[] {
     person: wedding[side],
     monogram: side === 'bride' ? wedding.monogram.bride : wedding.monogram.groom,
   }))
+}
+
+function getCurrentPathname() {
+  if (typeof globalThis === 'undefined' || !('location' in globalThis)) return '/'
+
+  const location = (globalThis as { location?: { pathname?: string } }).location
+  return location?.pathname ?? '/'
 }
