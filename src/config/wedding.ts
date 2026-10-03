@@ -93,10 +93,10 @@ chúng con hân hoan kính mời Quý vị đến chung vui trong ngày trọng 
 Sự hiện diện của Quý vị là niềm vui và niềm vinh hạnh lớn lao, đồng thời là lời chúc phúc ý nghĩa dành cho hai con trong ngày đặc biệt này.`,
   },
 
-  // --- Sự kiện: Lễ Vu Quy / Lễ Thành Hôn / Tiệc Cưới ---
+  // --- Sự kiện: Tiệc Cưới / Lễ Thành Hôn của hai nhà ---
   events: [
     {
-      key: 'vuquy',
+      key: 'tieccuoi-nha-gai',
       name: 'Tiệc Cưới',
       side: 'Nhà Gái',
       weekday: 'Thứ Hai',
@@ -105,17 +105,40 @@ Sự hiện diện của Quý vị là niềm vui và niềm vinh hạnh lớn l
       time: '16:00',
       venue: 'Tư gia nhà gái',
       address: 'Nhà số 1, ngõ 27 đường Ven Đồng, Hát Môn, Hà Nội',
-      // Tạm định vị khu vực, thay bằng tọa độ nhà gái khi có.
-      mapUrl: 'https://www.google.com/maps/search/?api=1&query=H%C3%A1t%20M%C3%B4n%2C%20H%C3%A0%20N%E1%BB%99i',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=21.074914,105.63221',
     },
     {
-      key: 'thanhhon',
+      key: 'thanhhon-nha-gai',
+      name: 'Lễ Thành Hôn',
+      side: 'Nhà Gái',
+      weekday: 'Thứ Ba',
+      date: '13.10.2026',
+      lunar: 'tức ngày 04 tháng 09 năm Bính Ngọ',
+      time: '14:30',
+      venue: 'Tư gia nhà trai',
+      address: 'Nhà số 9, ngõ Trung thôn Quán Hạ, Hát Môn, Hà Nội',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=21.055217257725428,105.64486623751162',
+    },
+    {
+      key: 'tieccuoi-nha-trai',
+      name: 'Tiệc Cưới',
+      side: 'Nhà Trai',
+      weekday: 'Thứ Hai',
+      date: '12.10.2026',
+      lunar: 'tức ngày 03 tháng 09 năm Bính Ngọ',
+      time: '16:30',
+      venue: 'Tư gia nhà trai',
+      address: 'Nhà số 9, ngõ Trung thôn Quán Hạ, Hát Môn, Hà Nội',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=21.055217257725428,105.64486623751162',
+    },
+    {
+      key: 'thanhhon-nha-trai',
       name: 'Lễ Thành Hôn',
       side: 'Nhà Trai',
       weekday: 'Thứ Ba',
       date: '13.10.2026',
       lunar: 'tức ngày 04 tháng 09 năm Bính Ngọ',
-      time: '16:30',
+      time: '14:30',
       venue: 'Tư gia nhà trai',
       address: 'Nhà số 9, ngõ Trung thôn Quán Hạ, Hát Môn, Hà Nội',
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=21.055217257725428,105.64486623751162',
