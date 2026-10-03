@@ -170,9 +170,10 @@ function GiftEnvelope({ onClick }: { onClick: () => void }) {
 export function Gifts() {
   const [isOpen, setIsOpen] = useState(false)
   const couple = getDisplayCouple()
-  const accounts = couple
-    .map(({ person }) => wedding.gifts.accounts.find((account) => account.owner === person.role))
-    .filter((account): account is BankAccount => Boolean(account))
+  const primaryAccount = wedding.gifts.accounts.find(
+    (account) => account.owner === couple[0]?.person.role,
+  )
+  const accounts = primaryAccount ? [primaryAccount] : []
 
   return (
     <Section id="gifts" decor={false} className="bg-[#f7f1e7]" contentClassName="max-w-none">

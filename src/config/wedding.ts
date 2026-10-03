@@ -192,16 +192,16 @@ Sự hiện diện của bạn sẽ là niềm vui và là một phần thật �
     accounts: [
       {
         owner: 'Chú Rể',
-        bank: 'VCB',
-        bankName: 'Vietcombank',
-        account: '0000000000',
+        bank: 'TCB',
+        bankName: 'Techcombank',
+        account: '19036376726016',
         holder: 'TRAN KHANH DUONG',
       },
       {
         owner: 'Cô Dâu',
-        bank: 'TCB',
-        bankName: 'Techcombank',
-        account: '1111111111',
+        bank: 'MB',
+        bankName: 'MB Bank',
+        account: '0867824910',
         holder: 'LE DIEM QUYNH',
       },
     ] as BankAccount[],
