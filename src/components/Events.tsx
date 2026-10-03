@@ -1,5 +1,5 @@
 import { wedding, type WeddingEvent } from '../config/wedding'
-import { getDisplayCouple } from '../lib/couple'
+import { getInvitationType } from '../lib/couple'
 import { Section } from './ui/Section'
 import { LeafDivider } from './ui/LeafDivider'
 
@@ -57,17 +57,9 @@ function EventBlock({ ev }: { ev: WeddingEvent }) {
 }
 
 export function Events() {
-  const couple = getDisplayCouple()
-  const orderedSides = couple.map(({ side }) => (side === 'groom' ? 'Nhà Trai' : 'Nhà Gái'))
-  const orderedEvents = orderedSides.flatMap((eventSide) =>
-    wedding.events.filter((event) => event.side === eventSide),
-  )
-  const events = [
-    ...orderedEvents,
-    ...wedding.events.filter(
-      (event) => event.side !== 'Nhà Trai' && event.side !== 'Nhà Gái',
-    ),
-  ]
+  const invitationType = getInvitationType()
+  const eventSide = invitationType === 'codau' ? 'Nhà Gái' : 'Nhà Trai'
+  const events = wedding.events.filter((event) => event.side === eventSide)
 
   return (
     <Section id="events" eyebrow="Sự kiện" title="Thông tin lễ cưới">
