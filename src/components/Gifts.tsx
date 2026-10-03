@@ -68,7 +68,11 @@ function GiftSheet({ accounts, onClose }: { accounts: BankAccount[]; onClose: ()
           </button>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-4">
+        <div
+          className={`mt-6 grid grid-cols-1 gap-6 sm:gap-4 ${
+            accounts.length === 1 ? 'justify-items-center' : 'sm:grid-cols-2'
+          }`}
+        >
           {accounts.map((acc) => (
             <div key={acc.owner} className="flex flex-col items-center text-center">
               <h4 className="min-h-8 text-xs font-medium text-forest">{acc.owner}</h4>
