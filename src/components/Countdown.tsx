@@ -81,7 +81,9 @@ export function Countdown() {
           {UNITS.map((u) => (
             <div
               key={u.key}
-              className="flex h-20 w-20 flex-col items-center justify-center rounded-2xl border border-white/70 bg-white/80 shadow-sm backdrop-blur-sm transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-md sm:h-24 sm:w-24"
+              className={`${
+                u.key === 'seconds' ? 'hidden sm:flex' : 'flex'
+              } h-20 w-20 flex-col items-center justify-center rounded-2xl border border-white/70 bg-white/80 shadow-sm backdrop-blur-sm transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-md sm:h-24 sm:w-24`}
             >
               <span className="font-serif text-3xl text-forest sm:text-4xl">
                 {String(left[u.key]).padStart(2, '0')}

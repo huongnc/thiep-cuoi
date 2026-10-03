@@ -86,7 +86,7 @@ export function Gallery() {
         ))}
       </div>
       <p className="mt-3 text-center text-[10px] uppercase tracking-[0.25em] text-sage/80">
-        Ảnh tự cuộn chậm · Rê vào cột để kéo tay
+        Ảnh tự cuộn chậm
       </p>
 
       {active !== null && (
@@ -142,7 +142,7 @@ function GalleryColumn({
   return (
     <div
       ref={setRef}
-      className="gallery-scroll h-[30rem] overflow-y-auto overscroll-contain rounded-2xl border border-sage-light/35 bg-white/20 p-2 shadow-inner sm:h-[36rem] sm:p-3"
+      className="gallery-scroll h-[42rem] overflow-y-auto overscroll-contain rounded-2xl border border-sage-light/35 bg-white/20 p-2 shadow-inner sm:h-[48rem] sm:p-3 lg:h-[54rem]"
       aria-label={`Cột album ${columnIndex + 1}, có thể cuộn dọc`}
       onMouseEnter={() => onPauseChange(true)}
       onMouseLeave={() => onPauseChange(false)}
@@ -151,6 +151,16 @@ function GalleryColumn({
       onTouchStart={() => onPauseChange(true)}
       onTouchEnd={() => onPauseChange(false)}
       onTouchCancel={() => onPauseChange(false)}
+      onWheel={(event) => {
+        if (event.deltaY === 0) return
+        event.preventDefault()
+        const deltaMultiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? event.currentTarget.clientHeight : 1
+        event.currentTarget.scrollBy({
+          top: event.deltaY * deltaMultiplier * 3,
+          behavior: 'auto',
+        })
+        onPauseChange(true)
+      }}
       onScroll={(event) => onScroll(event.currentTarget)}
     >
       <div>
