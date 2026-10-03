@@ -50,6 +50,27 @@ a {
   box-shadow: 0 20px 60px -20px rgba(60, 70, 58, 0.45);
 }
 
+.gallery-scroll {
+  scrollbar-color: rgba(107, 138, 94, 0.65) transparent;
+  scrollbar-width: thin;
+}
+.gallery-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.gallery-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.gallery-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(107, 138, 94, 0.65);
+  background-clip: padding-box;
+}
+.gallery-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(64, 81, 59, 0.78);
+  background-clip: padding-box;
+}
+
 /* Scroll-reveal (toggled by useReveal) */
 .reveal {
   opacity: 0;
@@ -74,6 +95,44 @@ a {
 }
 .animate-floaty {
   animation: floaty 3.5s ease-in-out infinite;
+}
+
+@keyframes gift-wiggle-left {
+  0%,
+  100% {
+    transform: rotate(-16deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-12deg) translateY(-4px);
+  }
+}
+
+@keyframes gift-wiggle-right {
+  0%,
+  100% {
+    transform: rotate(12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(16deg) translateY(-4px);
+  }
+}
+
+.gift-envelope-left {
+  transform: rotate(-16deg);
+}
+
+.gift-envelope-right {
+  transform: rotate(12deg);
+}
+
+.group:hover .gift-envelope-left,
+.group:focus-visible .gift-envelope-left {
+  animation: gift-wiggle-left 0.9s ease-in-out infinite;
+}
+
+.group:hover .gift-envelope-right,
+.group:focus-visible .gift-envelope-right {
+  animation: gift-wiggle-right 0.9s ease-in-out infinite;
 }
 
 @keyframes fade-in {
@@ -138,6 +197,11 @@ a {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .gift-envelope-left,
+  .gift-envelope-right {
+    animation: none !important;
   }
 }
 

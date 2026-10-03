@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { wedding } from '../config/wedding'
 import { Section } from './ui/Section'
@@ -6,38 +6,88 @@ import { Tilt3D } from './ui/Tilt3D'
 
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null)
-  const preview = wedding.gallery.slice(0, 4)
-  const extra = wedding.gallery.length - preview.length
+  const columnCount = useGalleryColumnCount()
+  const columnRefs = useRef<(HTMLDivElement | null)[]>([])
+  const pausedRef = useRef(false)
+  const progressRef = useRef(0)
+  const resumeTimerRef = useRef<number | null>(null)
+  const items = wedding.gallery.map((src, index) => ({ src, index }))
+  const columns = Array.from({ length: columnCount }, (_, columnIndex) =>
+    items.filter((_, index) => index % columnCount === columnIndex),
+  )
+
+  const handlePauseChange = (paused: boolean) => {
+    if (resumeTimerRef.current !== null) {
+      window.clearTimeout(resumeTimerRef.current)
+      resumeTimerRef.current = null
+    }
+
+    if (paused) {
+      pausedRef.current = true
+      return
+    }
+
+    resumeTimerRef.current = window.setTimeout(() => {
+      pausedRef.current = false
+      resumeTimerRef.current = null
+    }, 1000)
+  }
+
+  useEffect(() => {
+    let frame = 0
+    let previousTime = performance.now()
+
+    const animate = (time: number) => {
+      const delta = Math.min(time - previousTime, 100)
+      previousTime = time
+
+      if (!pausedRef.current) {
+        progressRef.current = (progressRef.current + (delta / 1000) * 0.015) % 1
+        columnRefs.current.forEach((column, columnIndex) => {
+          if (!column) return
+          const loopHeight = getGalleryLoopHeight(column)
+          const progress = columnIndex % 2 === 1 ? 1 - progressRef.current : progressRef.current
+          column.scrollTop = progress * Math.max(loopHeight, 0)
+        })
+      }
+
+      frame = requestAnimationFrame(animate)
+    }
+
+    frame = requestAnimationFrame(animate)
+    return () => {
+      cancelAnimationFrame(frame)
+      if (resumeTimerRef.current !== null) window.clearTimeout(resumeTimerRef.current)
+    }
+  }, [columnCount])
 
   return (
     <Section id="gallery" eyebrow="Khoảnh khắc" title="Album ảnh">
-      <div className="mx-auto grid max-w-xl grid-cols-2 gap-3 sm:gap-4">
-        {preview.map((src, i) => {
-          const isLast = i === preview.length - 1 && extra > 0
-          return (
-            <Tilt3D key={src} max={9} className="rounded-xl">
-              <button
-                type="button"
-                onClick={() => setActive(i)}
-                className="group relative block w-full overflow-hidden rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-sage/60 focus:ring-offset-2 focus:ring-offset-cream"
-                aria-label={`Xem ảnh ${i + 1}`}
-              >
-                <img
-                  src={src}
-                  alt={`Ảnh cưới ${i + 1}`}
-                  loading="lazy"
-                  className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105"
-                />
-                {isLast && (
-                  <span className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-forest/70 via-forest/35 to-transparent font-serif text-4xl text-cream">
-                    +{extra}
-                  </span>
-                )}
-              </button>
-            </Tilt3D>
-          )
-        })}
+      <div className="gallery-marquee-grid mx-auto grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+        {columns.map((column, columnIndex) => (
+          <GalleryColumn
+            key={columnIndex}
+            items={column}
+            columnIndex={columnIndex}
+            onSelect={setActive}
+            setRef={(element) => {
+              columnRefs.current[columnIndex] = element
+            }}
+            onPauseChange={handlePauseChange}
+            onScroll={(element) => {
+              if (!pausedRef.current) return
+              const loopHeight = getGalleryLoopHeight(element)
+              if (!loopHeight) return
+              const ratio = Math.min(Math.max(element.scrollTop / loopHeight, 0), 1)
+              progressRef.current = columnIndex % 2 === 1 ? 1 - ratio : ratio
+              handlePauseChange(false)
+            }}
+          />
+        ))}
       </div>
+      <p className="mt-3 text-center text-[10px] uppercase tracking-[0.25em] text-sage/80">
+        Ảnh tự cuộn chậm · Rê vào cột để kéo tay
+      </p>
 
       {active !== null && (
         <Lightbox
@@ -48,6 +98,90 @@ export function Gallery() {
         />
       )}
     </Section>
+  )
+}
+
+function getGalleryLoopHeight(element: HTMLDivElement) {
+  const firstCopy = element.firstElementChild?.firstElementChild
+  return firstCopy instanceof HTMLElement ? firstCopy.offsetHeight : element.scrollHeight / 2
+}
+
+function useGalleryColumnCount() {
+  const [count, setCount] = useState(4)
+
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 640) setCount(2)
+      else if (window.innerWidth < 1024) setCount(3)
+      else setCount(4)
+    }
+
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  return count
+}
+
+function GalleryColumn({
+  items,
+  columnIndex,
+  onSelect,
+  setRef,
+  onPauseChange,
+  onScroll,
+}: {
+  items: { src: string; index: number }[]
+  columnIndex: number
+  onSelect: (index: number) => void
+  setRef: (element: HTMLDivElement | null) => void
+  onPauseChange: (paused: boolean) => void
+  onScroll: (element: HTMLDivElement) => void
+}) {
+  return (
+    <div
+      ref={setRef}
+      className="gallery-scroll h-[30rem] overflow-y-auto overscroll-contain rounded-2xl border border-sage-light/35 bg-white/20 p-2 shadow-inner sm:h-[36rem] sm:p-3"
+      aria-label={`Cột album ${columnIndex + 1}, có thể cuộn dọc`}
+      onMouseEnter={() => onPauseChange(true)}
+      onMouseLeave={() => onPauseChange(false)}
+      onFocus={() => onPauseChange(true)}
+      onBlur={() => onPauseChange(false)}
+      onTouchStart={() => onPauseChange(true)}
+      onTouchEnd={() => onPauseChange(false)}
+      onTouchCancel={() => onPauseChange(false)}
+      onScroll={(event) => onScroll(event.currentTarget)}
+    >
+      <div>
+        {[0, 1].map((copy) => (
+          <div
+            key={copy}
+            aria-hidden={copy === 1}
+            className="space-y-3 pb-3 sm:space-y-4 sm:pb-4"
+          >
+            {items.map(({ src, index }) => (
+              <Tilt3D key={`${src}-${copy}`} max={9} className="rounded-xl">
+                <button
+                  type="button"
+                  onClick={() => onSelect(index)}
+                  tabIndex={copy === 1 ? -1 : undefined}
+                  className="group relative block w-full cursor-pointer overflow-hidden rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-sage/60 focus:ring-offset-2 focus:ring-offset-cream"
+                  aria-label={`Xem ảnh ${index + 1}`}
+                >
+                  <img
+                    src={src}
+                    alt={copy === 1 ? '' : `Ảnh cưới ${index + 1}`}
+                    loading="lazy"
+                    className="block h-auto w-full transition duration-700 group-hover:scale-105"
+                  />
+                </button>
+              </Tilt3D>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 

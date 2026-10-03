@@ -1,22 +1,9 @@
 import { wedding } from '../config/wedding'
-import { getDisplayCouple } from '../lib/couple'
 import { Section } from './ui/Section'
 
 export function LoveStory() {
-  const [first, second] = getDisplayCouple()
-
   return (
-    <>
-      <div className="relative overflow-hidden px-5 pb-8 pt-6 sm:pb-10 sm:pt-8">
-        <img
-          src={wedding.storyCover}
-          alt={`${first.person.name} và ${second.person.name}`}
-          loading="lazy"
-          className="mx-auto block aspect-[2/3] w-full max-w-3xl rounded-3xl object-cover shadow-xl"
-        />
-      </div>
-
-      <Section id="story" eyebrow="Our Story" title="Câu chuyện tình yêu">
+    <Section id="story" eyebrow="Our Story" title="Câu chuyện tình yêu">
         <div className="relative mx-auto max-w-2xl">
           {/* Đường dọc timeline */}
           <span className="absolute left-4 top-0 h-full w-px -translate-x-1/2 bg-sage-light/50 sm:left-1/2" />
@@ -50,7 +37,6 @@ export function LoveStory() {
             ))}
           </div>
         </div>
-      </Section>
-    </>
+    </Section>
   )
 }

@@ -59,7 +59,7 @@ export const wedding = {
     title: 'Chú Rể',
     father: 'Ông Nguyễn Đình Minh',
     mother: 'Bà Nguyễn Thị Yến',
-    photo: '/photos/duong-quynh/04.jpg',
+    photo: '/photos/optimized/duong-quynh/anh-le-2.jpg',
   } as Person,
   bride: {
     name: 'Diễm Quỳnh',
@@ -67,7 +67,7 @@ export const wedding = {
     title: 'Cô Dâu',
     father: 'Ông Nguyễn Năng Yên',
     mother: 'Bà Nguyễn Thị Duyên',
-    photo: '/photos/duong-quynh/02.jpg',
+    photo: '/photos/optimized/duong-quynh/anh-le-1.jpg',
   } as Person,
 
   hashtag: 'duongquynh',
@@ -80,19 +80,17 @@ export const wedding = {
   cover: {
     eyebrow: 'Trân trọng kính mời',
     invite: '',
-    image: '/photos/duong-quynh/hero.jpg',
+    image: '/photos/optimized/duong-quynh/hero.jpg',
     groomName: 'Khánh Dương',
     brideName: 'Diễm Quỳnh',
   },
 
-  quote: {
-    text: 'Yêu nhau không phải là nhìn nhau, mà là cùng nhau nhìn về một hướng.',
-    author: 'Antoine de Saint-Exupéry',
-  },
-
   invitation: {
     heading: 'Trân trọng kính mời',
-    body: 'Trong niềm hân hoan, hai gia đình chúng tôi Trân trọng kính mời lễ thành hôn của hai con. Sự hiện diện của quý vị là niềm vinh hạnh và là lời chúc phúc ý nghĩa nhất cho ngày trọng đại của chúng tôi.',
+    body: `Trong niềm hạnh phúc khi cùng nhau bước sang một chặng đường mới,
+chúng mình trân trọng mời bạn đến chung vui trong ngày trọng đại của chúng mình.
+
+Sự hiện diện của bạn sẽ là niềm vui và là một phần thật đẹp trong ngày đặc biệt này.`,
   },
 
   // --- Sự kiện: Lễ Vu Quy / Lễ Thành Hôn / Tiệc Cưới ---
@@ -122,9 +120,8 @@ export const wedding = {
   ] as WeddingEvent[],
 
   // --- Câu chuyện tình yêu ---
-  storyCover: '/photos/duong-quynh/BEE_2129.jpg',
-  scheduleCover: '/photos/duong-quynh/cover.jpg',
-  schedulePhoto: '/photos/duong-quynh/05.jpg',
+  storyCover: '/photos/optimized/duong-quynh/BEE_2129.jpg',
+  scheduleCover: '/photos/optimized/duong-quynh/cover.jpg',
   story: [
     {
       date: '24.05.2022',
@@ -147,14 +144,38 @@ export const wedding = {
 
   // --- Album ảnh (thay bằng ảnh của bạn) ---
   gallery: [
-    '/photos/duong-quynh/01.jpg',
-    '/photos/duong-quynh/02.jpg',
-    '/photos/duong-quynh/03.jpg',
-    '/photos/duong-quynh/04.jpg',
-    '/photos/duong-quynh/05.jpg',
-    '/photos/duong-quynh/06.jpg',
-    '/photos/duong-quynh/07.jpg',
-    '/photos/duong-quynh/08.jpg',
+    '/photos/optimized/imgs/BEE_0814.jpg',
+    '/photos/optimized/imgs/BEE_0955.jpg',
+    '/photos/optimized/imgs/BEE_1144.jpg',
+    '/photos/optimized/imgs/BEE_1211.jpg',
+    '/photos/optimized/imgs/BEE_1225.jpg',
+    '/photos/optimized/imgs/BEE_1511.jpg',
+    '/photos/optimized/imgs/BEE_1716.jpg',
+    '/photos/optimized/imgs/BEE_1755.jpg',
+    '/photos/optimized/imgs/BEE_1830.jpg',
+    '/photos/optimized/imgs/BEE_1887.jpg',
+    '/photos/optimized/imgs/BEE_1943.jpg',
+    '/photos/optimized/imgs/BEE_2010.jpg',
+    '/photos/optimized/imgs/BEE_2050.jpg',
+    '/photos/optimized/imgs/BEE_2060.jpg',
+    '/photos/optimized/imgs/BEE_2081.jpg',
+    '/photos/optimized/imgs/BEE_2102.jpg',
+    '/photos/optimized/imgs/BEE_2129.jpg',
+    '/photos/optimized/imgs/BEE_2213.jpg',
+    '/photos/optimized/imgs/DSCF0930.JPG',
+    '/photos/optimized/imgs/IMG_3456.JPG',
+    '/photos/optimized/imgs/IMG_3459.JPG',
+    '/photos/optimized/imgs/IMG_3461.JPG',
+    '/photos/optimized/imgs/IMG_3463.JPG',
+    '/photos/optimized/imgs/IMG_3464.JPG',
+    '/photos/optimized/imgs/IMG_3467.JPG',
+    '/photos/optimized/imgs/IMG_3473.JPG',
+    '/photos/optimized/imgs/IMG_3474.JPG',
+    '/photos/optimized/imgs/IMG_3490.JPG',
+    '/photos/optimized/imgs/IMG_3499.JPG',
+    '/photos/optimized/imgs/IMG_3521.JPG',
+    '/photos/optimized/imgs/ap%20BEE_0851.jpg',
+    '/photos/optimized/imgs/ap%20BEE_1288.jpg',
   ],
 
   // --- Lịch trình ngày cưới ---
@@ -168,7 +189,6 @@ export const wedding = {
 
   // --- Hộp quà mừng (QR chuyển khoản qua VietQR) ---
   gifts: {
-    note: 'Sự hiện diện của bạn là món quà quý giá nhất. Nếu muốn gửi lời chúc phúc bằng một món quà nhỏ, bạn có thể quét mã QR bên dưới.',
     accounts: [
       {
         owner: 'Chú Rể',

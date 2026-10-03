@@ -1,5 +1,7 @@
+import { useCallback, useState } from 'react'
 import { wedding } from '../config/wedding'
 import { useCountdown } from '../hooks/useCountdown'
+import { RsvpDialog } from './RsvpDialog'
 import { Section } from './ui/Section'
 
 const UNITS: { key: keyof ReturnType<typeof useCountdown>; label: string }[] = [
@@ -56,6 +58,8 @@ function MonthCalendar() {
 
 export function Countdown() {
   const left = useCountdown(wedding.weddingDate)
+  const [rsvpOpen, setRsvpOpen] = useState(false)
+  const closeRsvp = useCallback(() => setRsvpOpen(false), [])
 
   return (
     <div className="relative overflow-hidden bg-cream">
@@ -96,7 +100,21 @@ export function Countdown() {
         )}
 
         <MonthCalendar />
+
+        <div className="mx-auto mt-9 max-w-md text-center">
+          <p className="text-sm leading-relaxed text-ink/75">
+            Sự hiện diện của bạn sẽ làm ngày trọng đại của chúng mình thêm trọn vẹn.
+          </p>
+          <button
+            type="button"
+            onClick={() => setRsvpOpen(true)}
+            className="mt-4 cursor-pointer rounded-full border border-sage bg-white/70 px-6 py-2.5 text-sm font-medium uppercase tracking-widest text-forest shadow-sm transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:bg-white hover:shadow-md active:scale-95"
+          >
+            Xác nhận tham dự
+          </button>
+        </div>
       </Section>
+      <RsvpDialog open={rsvpOpen} onClose={closeRsvp} />
     </div>
   )
 }

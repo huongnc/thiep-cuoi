@@ -8,12 +8,7 @@ export function Invitation() {
   return (
     <Section id="invitation" eyebrow="Thư mời" title="Trân trọng kính mời">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="font-serif text-lg italic leading-relaxed text-ink/85 sm:text-xl">
-          “{wedding.quote.text}”
-        </p>
-        <p className="mt-2 text-sm text-sage">— {wedding.quote.author}</p>
-
-        <p className="mt-10 leading-relaxed text-ink/85">{wedding.invitation.body}</p>
+        <p className="leading-relaxed text-ink/85">{wedding.invitation.body}</p>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
           {couple.map(({ side, person }) => {

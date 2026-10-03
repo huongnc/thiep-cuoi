@@ -7,7 +7,7 @@ const LINKS = [
   { href: '#gallery', label: 'Album' },
   { href: '#events', label: 'Sự kiện' },
   { href: '#gifts', label: 'Mừng cưới' },
-  { href: '#rsvp', label: 'Xác nhận' },
+  { href: '#countdown', label: 'Xác nhận' },
 ]
 
 export function Nav() {

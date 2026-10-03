@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { wedding, type BankAccount } from '../config/wedding'
 import { getDisplayCouple } from '../lib/couple'
+import envelopeImage from '../assets/minimalism_darkred.webp'
 import { Section } from './ui/Section'
 
 function vietQrUrl(acc: BankAccount) {
@@ -10,7 +11,7 @@ function vietQrUrl(acc: BankAccount) {
   return `https://img.vietqr.io/image/${acc.bank}-${acc.account}-compact2.png?${params.toString()}`
 }
 
-function GiftSheet({ acc, onClose }: { acc: BankAccount; onClose: () => void }) {
+function GiftSheet({ accounts, onClose }: { accounts: BankAccount[]; onClose: () => void }) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function GiftSheet({ acc, onClose }: { acc: BankAccount; onClose: () => void }) 
     >
       <button
         type="button"
-        aria-label="Đóng thông tin mừng cưới"
+        aria-label="Đóng thông tin gửi quà mừng"
         onClick={onClose}
         className="absolute inset-0 bg-forest/45 backdrop-blur-sm"
       />
@@ -53,9 +54,8 @@ function GiftSheet({ acc, onClose }: { acc: BankAccount; onClose: () => void }) 
         <div className="mx-auto mb-5 h-1.5 w-12 rounded-full bg-sage-light/70" />
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-sage">{acc.owner}</p>
             <h3 id="gift-sheet-title" className="mt-1 font-serif text-2xl text-forest">
-              Mừng cưới
+              Gửi quà mừng
             </h3>
           </div>
           <button
@@ -68,21 +68,33 @@ function GiftSheet({ acc, onClose }: { acc: BankAccount; onClose: () => void }) 
           </button>
         </div>
 
-        <div className="mt-5 grid items-center gap-6 sm:grid-cols-[auto_1fr] sm:gap-8">
-          <img
-            src={vietQrUrl(acc)}
-            alt={`Mã QR ${acc.owner}`}
-            loading="lazy"
-            className="mx-auto h-56 w-56 rounded-xl bg-white object-contain p-2 shadow-sm"
-          />
-          <div className="text-center sm:text-left">
-            <p className="font-serif text-xl text-forest">{acc.bankName}</p>
-            <p className="mt-2 text-sm text-ink/80">Số tài khoản: {acc.account}</p>
-            <p className="mt-1 text-sm font-medium text-ink">{acc.holder}</p>
-            <p className="mt-4 text-sm leading-relaxed text-ink/70">
-              Quét mã QR để gửi lời chúc phúc đến {acc.owner.toLowerCase()}.
-            </p>
-          </div>
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-4">
+          {accounts.map((acc) => (
+            <div key={acc.owner} className="flex flex-col items-center text-center">
+              <h4 className="min-h-8 text-xs font-medium text-forest">{acc.owner}</h4>
+              <div className="mt-2 flex h-40 w-40 items-center justify-center rounded-xl border border-sage-light/30 bg-white p-2 shadow-lg">
+                <img
+                  src={vietQrUrl(acc)}
+                  alt={`Mã QR ${acc.owner}`}
+                  loading="lazy"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              <div className="mt-2 space-y-0.5 text-[11px] text-ink/70">
+                <p>{acc.bankName}</p>
+                <p className="font-mono">{acc.account}</p>
+                <p className="font-semibold text-ink">{acc.holder}</p>
+              </div>
+              <a
+                href={vietQrUrl(acc)}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-flex items-center gap-1 rounded-full bg-sage/10 px-3 py-1 text-[10px] font-medium text-sage transition-colors hover:bg-sage/20"
+              >
+                Mở ảnh QR
+              </a>
+            </div>
+          ))}
         </div>
       </div>
     </div>,
@@ -90,47 +102,91 @@ function GiftSheet({ acc, onClose }: { acc: BankAccount; onClose: () => void }) 
   )
 }
 
-function GiftButton({ acc, onClick }: { acc: BankAccount; onClick: () => void }) {
+function GiftEnvelope({ onClick }: { onClick: () => void }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="group flex w-full items-center justify-between gap-4 rounded-2xl border border-sage-light/50 bg-white/60 px-5 py-5 text-left shadow-sm backdrop-blur-sm transition-[border-color,background-color,transform,box-shadow] hover:-translate-y-1 hover:border-sage hover:bg-white/80 hover:shadow-md active:translate-y-0 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sage/50"
+      aria-label="Mở hộp quà mừng"
+      className="group relative mx-auto flex h-[357px] w-[280px] max-w-full cursor-pointer flex-col items-center justify-end outline-none"
+      style={{ width: 280, height: 357, maxWidth: '100%' }}
     >
-      <span>
-        <span className="block text-xs uppercase tracking-[0.3em] text-sage">{acc.owner}</span>
-        <span className="mt-1 block font-serif text-lg text-forest">Xem mã QR</span>
+      <span className="absolute left-[12%] top-[7%] text-xl text-[#b58b2f] transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-110">
+        ✦
       </span>
-      <span
-        aria-hidden="true"
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sage text-xl text-cream transition-[background-color,transform] group-hover:-translate-y-1 group-hover:bg-forest"
+      <span className="absolute right-[9%] top-[15%] text-sm text-[#b58b2f] transition-transform duration-500 group-hover:translate-y-1 group-hover:scale-110">
+        ✦
+      </span>
+      <span className="absolute left-[4%] top-[35%] text-xs text-[#b58b2f] transition-transform duration-500 group-hover:-translate-x-1">
+        ✦
+      </span>
+      <span className="absolute right-[3%] top-[25%] text-xs text-[#b58b2f] transition-transform duration-500 group-hover:translate-x-1">
+        ✦
+      </span>
+
+      <div
+        className="relative mb-10 block h-[275px] w-[260px] transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[-2deg]"
+        style={{ width: 260, height: 275, maxWidth: '100%' }}
       >
-        ↑
+        <div className="absolute bottom-[-6px] left-1/2 h-3 w-44 -translate-x-1/2 rounded-[50%] bg-[#5a1c20]/30 blur-[4px]" />
+        <img
+          src={envelopeImage}
+          alt=""
+          aria-hidden="true"
+          className="gift-envelope-left absolute z-10 object-contain object-bottom opacity-95 drop-shadow-[0_8px_14px_rgba(0,0,0,0.18)]"
+          style={{
+            position: 'absolute',
+            top: 8,
+            left: 0,
+            width: 155,
+            height: 260,
+            objectFit: 'contain',
+            objectPosition: 'bottom',
+          }}
+        />
+        <img
+          src={envelopeImage}
+          alt=""
+          aria-hidden="true"
+          className="gift-envelope-right absolute z-0 object-contain object-bottom drop-shadow-[0_10px_18px_rgba(0,0,0,0.22)]"
+          style={{
+            position: 'absolute',
+            top: 25,
+            left: 123,
+            width: 135,
+            height: 235,
+            objectFit: 'contain',
+            objectPosition: 'bottom',
+          }}
+        />
+      </div>
+      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm font-medium text-[#5a1c20]">
+        Nhấn để mở
       </span>
     </button>
   )
 }
 
 export function Gifts() {
-  const [selectedAccount, setSelectedAccount] = useState<BankAccount | null>(null)
+  const [isOpen, setIsOpen] = useState(false)
   const couple = getDisplayCouple()
   const accounts = couple
     .map(({ person }) => wedding.gifts.accounts.find((account) => account.owner === person.role))
     .filter((account): account is BankAccount => Boolean(account))
 
   return (
-    <Section id="gifts" eyebrow="Mừng cưới" title="Hộp quà mừng">
-      <p className="mx-auto mb-10 max-w-xl text-center leading-relaxed text-ink/80">
-        {wedding.gifts.note}
-      </p>
-      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2">
-        {accounts.map((acc) => (
-          <GiftButton key={acc.owner} acc={acc} onClick={() => setSelectedAccount(acc)} />
-        ))}
+    <Section id="gifts" decor={false} className="bg-[#f7f1e7]" contentClassName="max-w-none">
+      <h2 className="text-center font-serif text-[28px] font-bold uppercase tracking-[0.04em] text-[#5a1c20] sm:text-[32px]">
+        Gửi quà mừng
+      </h2>
+      <div className="flex justify-center">
+        <GiftEnvelope onClick={() => setIsOpen(true)} />
       </div>
-      {selectedAccount && (
-        <GiftSheet acc={selectedAccount} onClose={() => setSelectedAccount(null)} />
-      )}
+      <p className="mx-auto mt-5 max-w-md px-4 text-center font-serif text-lg italic leading-relaxed text-[#5a1c20]/75 sm:mt-6 sm:text-xl">
+        Điều hạnh phúc nhất với chúng mình là có sự hiện diện và lời chúc phúc của bạn trong ngày
+        trọng đại này.
+      </p>
+      {isOpen && <GiftSheet accounts={accounts} onClose={() => setIsOpen(false)} />}
     </Section>
   )
 }
