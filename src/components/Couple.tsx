@@ -1,38 +1,25 @@
 import { type Person } from '../config/wedding'
 import { useReveal } from '../hooks/useReveal'
 import { getDisplayCouple } from '../lib/couple'
-import { CornerFloral, DecorBar } from './ui/Floral'
-import { Tilt3D } from './ui/Tilt3D'
+import { CornerFloral } from './ui/Floral'
 
-function Photo({ person, baseRotate }: { person: Person; baseRotate: number }) {
-  const isGroom = person.role === 'Chú Rể'
-
+function CoupleCard({ person }: { person: Person }) {
   return (
-    <Tilt3D
-      baseRotate={baseRotate}
-      className="shrink-0 overflow-hidden rounded-md border-[3px] border-gold/70 bg-white/60 p-1.5 shadow-xl"
-    >
+    <article className="group relative mx-auto w-full max-w-[30rem] overflow-hidden rounded-[1.5rem] border-4 border-cream/25 bg-forest shadow-2xl">
       <img
         src={person.photo}
         alt={person.name}
-        className={`h-56 w-40 rounded-sm object-cover sm:h-80 sm:w-60 ${
-          isGroom
-            ? 'origin-[28%_42%] scale-[1.55] object-[28%_42%]'
-            : 'origin-[72%_42%] scale-[1.55] object-[72%_42%]'
-        }`}
+        className="block aspect-[2/3] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
       />
-    </Tilt3D>
-  )
-}
-
-function NameBlock({ person, align }: { person: Person; align: 'left' | 'right' }) {
-  return (
-    <div className={`min-w-0 flex-1 ${align === 'right' ? 'text-right' : 'text-left'}`}>
-      <p className="font-serif text-base italic text-ink/70 sm:text-lg">{person.title}</p>
-      <h3 className="mt-1 font-serif text-3xl leading-tight text-forest sm:text-5xl">
-        {person.name}
-      </h3>
-    </div>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest via-forest/75 to-transparent px-6 pb-7 pt-28 text-center text-cream sm:px-8 sm:pb-9">
+        <p className="font-script text-3xl leading-none text-cream/95 sm:text-4xl">
+          {person.role}
+        </p>
+        <h3 className="mt-2 font-serif text-4xl uppercase tracking-[0.08em] text-cream sm:text-5xl">
+          {person.name}
+        </h3>
+      </div>
+    </article>
   )
 }
 
@@ -44,26 +31,14 @@ export function Couple() {
     <section
       id="couple"
       ref={ref}
-      className="reveal relative scroll-mt-20 overflow-hidden px-6 py-20 sm:py-24"
+      className="reveal relative scroll-mt-20 overflow-hidden bg-forest px-5 py-14 sm:px-10 sm:py-20 lg:px-16"
     >
-      {/* Dải hồ sen full-width phía sau */}
-      <DecorBar className="absolute inset-x-0 top-[42%] z-0 h-28 sm:h-32" />
-      {/* Hoa lớn trang trí */}
-      <CornerFloral className="absolute -right-12 -top-10 z-0 h-56 w-56 sm:h-80 sm:w-80" />
-      <CornerFloral flip className="absolute -left-14 -top-6 z-0 h-40 w-40 opacity-80 sm:h-52 sm:w-52" />
-      <CornerFloral flip className="absolute -bottom-10 -left-12 z-0 h-52 w-52 sm:h-64 sm:w-64" />
-      <CornerFloral className="absolute -bottom-8 -right-10 z-0 h-40 w-40 opacity-80 sm:h-52 sm:w-52" />
+      <CornerFloral className="absolute -right-20 -top-16 z-0 h-72 w-72 opacity-30 sm:h-[28rem] sm:w-[28rem]" />
+      <CornerFloral flip className="absolute -bottom-20 -left-20 z-0 h-72 w-72 opacity-25 sm:h-[28rem] sm:w-[28rem]" />
 
-      <div className="relative z-10 mx-auto max-w-2xl">
-        <div className="flex items-center gap-4 sm:gap-10">
-          <Photo person={first.person} baseRotate={-4} />
-          <NameBlock person={first.person} align="left" />
-        </div>
-
-        <div className="mt-10 flex items-center justify-end gap-4 sm:mt-8 sm:gap-10">
-          <NameBlock person={second.person} align="right" />
-          <Photo person={second.person} baseRotate={3} />
-        </div>
+      <div className="relative z-10 mx-auto grid max-w-5xl gap-8 sm:gap-12 lg:grid-cols-2 lg:items-start">
+        <CoupleCard person={first.person} />
+        <CoupleCard person={second.person} />
       </div>
     </section>
   )

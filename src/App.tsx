@@ -18,7 +18,7 @@ export default function App() {
       <Gate />
       <Music />
       <Petals />
-      <div className="invite-card relative w-full max-w-3xl">
+      <div className="invite-card relative w-full max-w-6xl">
         <Nav />
         <Couple />
         <Invitation />
@@ -29,7 +29,7 @@ export default function App() {
             src={wedding.storyCover}
             alt="Khoảnh khắc trong câu chuyện tình yêu"
             loading="lazy"
-            className="mx-auto block aspect-[2/3] w-full max-w-3xl rounded-3xl object-cover shadow-xl"
+            className="mx-auto block aspect-[2/3] w-full max-w-3xl object-cover"
           />
         </div>
         <LoveStory />
