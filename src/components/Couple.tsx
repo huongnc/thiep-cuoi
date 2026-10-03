@@ -12,12 +12,12 @@ function CoupleCard({ person }: { person: Person }) {
         className="block aspect-[2/3] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
       />
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest via-forest/75 to-transparent px-6 pb-7 pt-28 text-center text-cream sm:px-8 sm:pb-9">
-        <p className="font-script text-3xl leading-none text-cream/95 sm:text-4xl">
-          {person.role}
-        </p>
-        <h3 className="mt-2 font-serif text-4xl uppercase tracking-[0.08em] text-cream sm:text-5xl">
-          {person.name}
-        </h3>
+          <p className="font-serif text-xl italic text-cream/90 sm:text-2xl">
+            {person.role}
+          </p>
+          <h3 className="mt-1 font-script text-5xl leading-tight text-cream sm:text-7xl">
+            {person.name}
+          </h3>
       </div>
     </article>
   )
