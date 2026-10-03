@@ -10,7 +10,7 @@ export interface InvitationMetadata {
 }
 
 export const SITE_ORIGIN = 'https://thiepcuoi.nch.id.vn'
-export const INVITATION_IMAGE = `${SITE_ORIGIN}/og-cover-casual.png?v=2081`
+export const INVITATION_IMAGE = `${SITE_ORIGIN}/og-cover-casual.jpg?v=2082`
 
 export function getInvitationMetadata(pathname = '/'): InvitationMetadata {
   const [first, second] = getDisplayCouple(pathname)
