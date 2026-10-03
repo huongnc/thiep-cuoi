@@ -118,7 +118,7 @@ Sự hiện diện của Quý vị là niềm vui và niềm vinh hạnh lớn l
       time: '16:30',
       venue: 'Tư gia nhà trai',
       address: 'Nhà số 9, ngõ Trung thôn Quán Hạ, Hát Môn, Hà Nội',
-      mapUrl: 'https://www.google.com/maps/search/?api=1&query=21.074914,105.63221',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=21.055217257725428,105.64486623751162',
     },
   ] as WeddingEvent[],
 
